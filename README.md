@@ -28,7 +28,7 @@ The four rings provide structure to how we choose and adopt technology.
 
  - **Explore** — This technology has potential and is worth experimenting with during growth time (i.e. an X-Lab project, SoapBox session, or Lunch & Learn presentation) and/or by trialing on a prototype project or something similar.
 
- - **Endure** — This is no longer how we do things. It is acceptable for this to still be used in development where it is a standard on existing projects or products, but don't adopt it for new endevours, and consider migrating away from it wherever possible.
+ - **Endure** — This is no longer how we do things. It is acceptable for this to still be used in development where it is a standard, but don't adopt it for new endeavours, and consider migrating away from it wherever possible.
 
  - **Retire** — Don't use this technology! If you are using it then you should be spending some time migrating away from this. 
 
