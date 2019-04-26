@@ -63,7 +63,7 @@ spec:
   tls:
   - hosts:
     - techradar.whereismytransport.com
-    secretName: tls-secret
+    secretName: techradar-tls-secret
   rules:
   - host: techradar.whereismytransport.com
     http:
