@@ -4,7 +4,7 @@ metadata:
   name: techradar-deployment
   labels:
     app: techradar-deployment
-    version: {imageversion}
+    version: latest
 spec:
   # selector defines how the deployment finds which pods to manage. spec.selector is immutable after creation.
   selector:
@@ -15,11 +15,11 @@ spec:
     metadata:
       labels:
         app: techradar
-        version: {imageversion}
+        version: latest
     spec:
       containers:
       - name: techradar-container
-        image: whereismytransport.azurecr.io/techradar:{imageversion}
+        image: whereismytransport.azurecr.io/techradar:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 26047
@@ -29,7 +29,7 @@ spec:
             memory: 10M
           limits:
             cpu: 0.1
-            memory: 100MB
+            memory: 100M
   strategy:
     type: Recreate
     rollingUpdate: null
@@ -40,13 +40,35 @@ metadata:
   name: techradar-service
   labels:
     app: techradar-service
-    version: {imageversion}
+    version: latest
 spec:
   type: NodePort
   selector:
     app: techradar
-    version: {imageversion}
+    version: latest
   ports:
   - protocol: TCP
     port: 80
     targetPort: 80
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: techradar-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    certmanager.k8s.io/cluster-issuer: letsencrypt
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  tls:
+  - hosts:
+    - techradar.whereismytransport.com
+    secretName: tls-secret
+  rules:
+  - host: techradar.whereismytransport.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: techradar-service
+          servicePort: 80
