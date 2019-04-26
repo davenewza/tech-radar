@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: techradar-deployment
+  labels:
+    app: techradar-deployment
+    version: {imageversion}
+spec:
+  # selector defines how the deployment finds which pods to manage. spec.selector is immutable after creation.
+  selector:
+    matchLabels:
+      app: techradar
+  # template describes the pod (i.e. the containers to run on each pod, etc.)
+  template:
+    metadata:
+      labels:
+        app: techradar
+        version: {imageversion}
+    spec:
+      containers:
+      - name: techradar-container
+        image: whereismytransport.azurecr.io/techradar:{imageversion}
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 26047
+        resources:
+          requests:
+            cpu: 0.05
+            memory: 10M
+          limits:
+            cpu: 0.1
+            memory: 100MB
+  strategy:
+    type: Recreate
+    rollingUpdate: null
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: techradar-service
+  labels:
+    app: techradar-service
+    version: {imageversion}
+spec:
+  type: NodePort
+  selector:
+    app: techradar
+    version: {imageversion}
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
