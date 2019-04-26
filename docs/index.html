@@ -12,6 +12,27 @@
 <svg id="radar"></svg>
 
 <script>
+
+const quad = {
+    LANGS_FRAMEWORKS_TOOLS: 0,
+    INFRASTRUCTURE: 1,
+    DATA: 2,
+    TECHNIQUES: 3
+}
+
+const ring = {
+    ADOPT: 0,
+    ASSESS: 1,
+    ENDURE: 2,
+    RETIRE: 3
+}
+
+const movement = {
+    NONE: 0,
+    IN: 1,
+    OUT: -1
+}
+
 radar_visualization({
   svg_id: "radar",
   width: 1450,
@@ -32,17 +53,17 @@ radar_visualization({
     { name: "Adopt", color: "#93c47d" },
     { name: "Assess", color: "#93d2c2" },
     { name: "Endure", color: "#fbdb84" },
-    { name: "Retire/Hold", color: "#efafa9" }
+    { name: "Retire", color: "#efafa9" }
   ],
   print_layout: true,
   // zoomed_quadrant: 0,
   entries: [
       {
-        quadrant: 0,
-        ring: 2,
+        quadrant: quad.LANGS_FRAMEWORKS_TOOLS,
+        ring: ring.ENDURE,
         label: "Postman",
         active: true,
-        moved: 0
+        moved: movement.NONE
       },
       {
         quadrant: 0,
