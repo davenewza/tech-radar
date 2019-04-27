@@ -2,7 +2,7 @@
 <head>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
 <title>WhereIsMyTransport Tech Radar</title>
-<link rel="shortcut icon" href="https://www.zalando.de/favicon.ico">
+<link rel="shortcut icon" href="favicon.ico">
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="radar.js"></script>
 <link rel="stylesheet" href="radar.css">
@@ -58,6 +58,20 @@ radar_visualization({
   print_layout: true,
   // zoomed_quadrant: 0,
   entries: [
+      {
+        label: "Docker Compose for CI",
+        quadrant: quad.TECHNIQUES,
+        ring: ring.ASSESS,
+        active: true,
+        moved: movement.NONE
+      },
+      {
+        label: "Cloudflare",
+        quadrant: quad.INFRASTRUCTURE,
+        ring: ring.ADOPT,
+        active: true,
+        moved: movement.NONE
+      },
       {
         label: "Cloud Firestore",
         quadrant: quad.DATA,
@@ -195,6 +209,20 @@ radar_visualization({
         label: "CSS-in-JS",
         quadrant: quad.TECHNIQUES,
         ring: ring.ASSESS,
+        active: true,
+        moved: movement.NONE
+      },
+      {
+        label: "Kubernetes",
+        quadrant: quad.INFRASTRUCTURE,
+        ring: ring.ADOPT,
+        active: true,
+        moved: movement.NONE
+      },
+      {
+        label: "Docker",
+        quadrant: quad.INFRASTRUCTURE,
+        ring: ring.ADOPT,
         active: true,
         moved: movement.NONE
       },
