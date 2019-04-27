@@ -3,8 +3,6 @@
 At [WhereIsMyTransport](http://www.whereismytransport.com), we maintain a Technology
 Radar to help our engineering team align on technology choices. It provides us with a structured approach to how we assess, adopt, and retire programming languages & frameworks, platforms, tools, and techniques. It also serves as a excellent way to communicate our technology stack to the outside world.
 
-**Our Technology Radar is live at [techradar.whereismytransport.com](https://techradar.whereismytransport.com)!**
-
 It is based on the [pioneering work
 by ThoughtWorks](https://www.thoughtworks.com/radar). We've made some adjustments by amending the definition and description of the rings, similar to what has been done by the folks at [Redgate](https://github.com/red-gate/Tech-Radar).
 
