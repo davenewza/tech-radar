@@ -2,7 +2,7 @@
 <head>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
 <title>WhereIsMyTransport Tech Radar</title>
-<link rel="shortcut icon" href="https://www.zalando.de/favicon.ico">
+<link rel="shortcut icon" href="favicon.ico">
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="radar.js"></script>
 <link rel="stylesheet" href="radar.css">
@@ -12,6 +12,27 @@
 <svg id="radar"></svg>
 
 <script>
+
+const quad = {
+    LANGS_FRAMEWORKS_TOOLS: 0,
+    INFRASTRUCTURE: 1,
+    DATA: 2,
+    TECHNIQUES: 3
+}
+
+const ring = {
+    ADOPT: 0,
+    ASSESS: 1,
+    ENDURE: 2,
+    RETIRE: 3
+}
+
+const movement = {
+    NONE: 0,
+    IN: 1,
+    OUT: -1
+}
+
 radar_visualization({
   svg_id: "radar",
   width: 1450,
@@ -23,14 +44,14 @@ radar_visualization({
   },
   title: "WhereIsMyTransport Technology Radar — Q2 2019",
   quadrants: [
-    { name: "Languages & Frameworks" },
-    { name: "Tools" },
-    { name: "Platforms" },
+    { name: "Languages, Frameworks & Tools" },
+    { name: "Infrastructure" },
+    { name: "Data Management" },
     { name: "Techniques" }
   ],
   rings: [
     { name: "Adopt", color: "#93c47d" },
-    { name: "Explore", color: "#93d2c2" },
+    { name: "Assess", color: "#93d2c2" },
     { name: "Endure", color: "#fbdb84" },
     { name: "Retire", color: "#efafa9" }
   ],
@@ -38,67 +59,11 @@ radar_visualization({
   // zoomed_quadrant: 0,
   entries: [
       {
-        quadrant: 0,
-        ring: 0,
-        label: "C#",
+        label: "Example Blip",
+        quadrant: quad.TECHNIQUES,
+        ring: ring.ASSESS,
         active: true,
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 0,
-        label: "Akka.NET",
-        active: true,
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 0,
-        label: ".NET Core",
-        active: true,
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 3,
-        label: ".NET Framework",
-        active: true,
-        moved: 0
-      },
-      {
-        quadrant: 1,
-        ring: 0,
-        label: "MongoDB",
-        active: true,
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 3,
-        label: "mLab",
-        active: true,
-        moved: 1
-      },
-      {
-        quadrant: 2,
-        ring: 1,
-        label: "MongoDB Atlas",
-        active: true,
-        moved: -1
-      },
-      {
-        quadrant: 3,
-        ring: 0,
-        label: "Continuous Integration",
-        active: true,
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 1,
-        label: "Continuous Deployment",
-        active: true,
-        moved: 0
+        moved: movement.NONE
       }
   ]
 });
@@ -126,9 +91,9 @@ radar_visualization({
   <h3>What are the quadrants?</h3>
 
   <ul>
-    <li><strong>Languages and Frameworks</strong> — The programming languages and frameworks we use to build our products and tools.</li>
-    <li><strong>Tools</strong> — These can be components, such as databases, software development tools, such as versions control systems.</li>
-    <li><strong>Platforms</strong> — Things that we build software on top of, such as runtime and development platforms, like .NET Core, mobile technologies like Android, or virtual platforms like the JVM.</li>
+    <li><strong>Languages, Frameworks & Tools</strong> — The programming languages and frameworks we use to build our products, and the tools that allow us to get things done.</li>
+    <li><strong>Infrastructure</strong> — The infrastructure required to host, control and manage the running of our applications, such as cloud providers, containerisation technologies, monitoring, DNS and CDN services, etc.</li>
+    <li><strong>Data Management</strong> — Technologies for storing and transmitting data, such as database platforms, caching providers and queue services.</li>
     <li><strong>Techniques</strong> — These include elements of the software development process, such as continuous deployment; and ways of structuring software, such as microservices.</li>
   </ul>
 
@@ -137,23 +102,14 @@ radar_visualization({
   <h3>What are the rings?</h3>
 
   <ul>
-    <li><strong>Adopt</strong> — This is a technology you should choose to solve a problem, where applicable. Everything in here forms part of our default set of technology choices.</li>
-    <li><strong>Explore</strong> — This technology has potential and is worth experimenting with during growth time (i.e. an X-Lab project, SoapBox session, or Lunch & Learn presentation) and/or by trialing on a prototype project or something similar.</li>
-    <li><strong>Endure</strong> — This is no longer how we do things. It is acceptable for this to still be used in development where it is a standard, but don't adopt it for new endeavours, and consider migrating away from it wherever possible.</li>
-    <li><strong>Retire</strong> — Don't use this technology! If you are using it then you should be spending some time migrating away from this.</li>
+    <li><strong>Adopt</strong> — This is a technology we should choose to solve a problem, where applicable. Everything in here forms part of our default set of technology choices.</li>
+    <li><strong>Assess</strong> — This technology has potential and is worth experimenting with and trialing.  Could also be a candidate for an X-Lab project, SoapBox session, or Lunch & Learn presentation.</li>
+    <li><strong>Endure</strong> — This is no longer how we do things. It is acceptable for this to still be used in development where it is a standard, but don't adopt it for new endeavours.</li>
+    <li><strong>Retire</strong> — Do not use this technology because either we are deprecating it, it's not a good fit for our team, or because we have chosen a better alternative. If we are using it then we should be spending some time migrating away from it.</li>
   </ul>
 
 </td></tr>
 </table>
-
-<!-- <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-105375141-2', 'auto');
-  ga('send', 'pageview');
-</script> -->
 
 </body>
 </html>

@@ -1,6 +1,6 @@
-# Build the phoenix.api image. Run this from the client's root directory:
+# Build the techradar image. Run this from the client's root directory:
 #      docker build -t techradar .
-# Run the 'latest' phoenix.api image:
+# Run the 'latest' techradar image:
 #      docker run --rm -it -p 80:80 techradar:latest
 
 FROM node:10.15.3 as builder

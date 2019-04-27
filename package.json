@@ -9,7 +9,7 @@
     "doc": "docs"
   },
   "devDependencies": {
-    "browser-sync": "^2.26.3",
+    "browser-sync": "^2.26.5",
     "eslint": "^5.7.0",
     "htmllint": "^0.7.2"
   },
@@ -20,7 +20,6 @@
     "lint:html": "htmllint docs/*.html"
   },
   "dependencies": {
-    "cross-env": "^5.2.0",
-    "rimraf": "^2.6.3"
+
   }
 }
